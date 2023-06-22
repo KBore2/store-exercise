@@ -4,11 +4,14 @@ div {
   justify-content: space-between;
   padding: 2rem;
 
-  h1 {
+  .home {
+    font-size: 2rem;
     text-align: center;
     margin: 0;
+    text-decoration: none;
+    color: black;
   }
-  a {
+  .cart {
     height: fit-content;
     width: 60px;
     padding: 4px;
