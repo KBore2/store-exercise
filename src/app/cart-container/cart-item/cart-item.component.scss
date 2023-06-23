@@ -1,0 +1,23 @@
+.item {
+  display: flex;
+
+  img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .details {
+    padding: 1rem;
+
+    .quantity {
+      display: flex;
+      align-items: baseline;
+
+      & > * {
+        width: 70px;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
+  }
+}

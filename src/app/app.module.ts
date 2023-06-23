@@ -10,6 +10,8 @@ import { BodyComponent } from './body/body.component';
 import { ProductCardComponent } from './products-container/product-card/product-card.component';
 import { ProductsContainerComponent } from './products-container/products-container.component';
 import { CartContainerComponent } from './cart-container/cart-container.component';
+import { CartItemComponent } from './cart-container/cart-item/cart-item.component';
+import { CartSummaryComponent } from './cart-container/cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { CartContainerComponent } from './cart-container/cart-container.componen
     ProductCardComponent,
     ProductsContainerComponent,
     CartContainerComponent,
+    CartItemComponent,
+    CartSummaryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MatIconModule],
   providers: [],
