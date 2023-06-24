@@ -1,0 +1,25 @@
+.product {
+  display: flex;
+  padding: 2rem;
+
+  justify-content: space-around;
+
+  img {
+    width: 350px;
+    margin-left: auto;
+  }
+
+  .details {
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    width: 400px;
+
+    button {
+      height: 50px;
+      font-size: 1.4rem;
+    }
+  }
+}

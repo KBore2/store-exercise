@@ -12,6 +12,7 @@ import { ProductsContainerComponent } from './products-container/products-contai
 import { CartContainerComponent } from './cart-container/cart-container.component';
 import { CartItemComponent } from './cart-container/cart-item/cart-item.component';
 import { CartSummaryComponent } from './cart-container/cart-summary/cart-summary.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CartSummaryComponent } from './cart-container/cart-summary/cart-summary
     CartContainerComponent,
     CartItemComponent,
     CartSummaryComponent,
+    ProductPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MatIconModule],
   providers: [],

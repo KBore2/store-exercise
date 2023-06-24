@@ -5,10 +5,8 @@
   <a href="">Tech</a>
 </nav>
 <div class="products">
-  <app-product-card />
-  <app-product-card />
-  <app-product-card />
-  <app-product-card />
-  <app-product-card />
-  <app-product-card />
+  <app-product-card
+    *ngFor="let p of [1, 2, 3, 4, 5, 6]"
+    (click)="productDetails()"
+  />
 </div>
