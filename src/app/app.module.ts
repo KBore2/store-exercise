@@ -4,15 +4,15 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { BodyComponent } from './body/body.component';
-import { ProductCardComponent } from './products-container/product-card/product-card.component';
-import { ProductsContainerComponent } from './products-container/products-container.component';
-import { CartContainerComponent } from './cart-container/cart-container.component';
-import { CartItemComponent } from './cart-container/cart-item/cart-item.component';
-import { CartSummaryComponent } from './cart-container/cart-summary/cart-summary.component';
-import { ProductPageComponent } from './product-page/product-page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BodyComponent } from './components/body/body.component';
+import { ProductCardComponent } from './components/products-container/product-card/product-card.component';
+import { ProductsContainerComponent } from './components/products-container/products-container.component';
+import { CartContainerComponent } from './components/cart-container/cart-container.component';
+import { CartItemComponent } from './components/cart-container/cart-item/cart-item.component';
+import { CartSummaryComponent } from './components/cart-container/cart-summary/cart-summary.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 @NgModule({
   declarations: [
