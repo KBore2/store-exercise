@@ -1,13 +1,11 @@
-<div class="product">
-  <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" />
+<div class="product" *ngIf="product$ | async as product">
+  <img [src]="product.image" alt="picture of select product" />
   <div class="details">
-    <p>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</p>
+    <p>{{ product.title }}</p>
     <P>
-      Your perfect pack for everyday use and walks in the forest. Stash your
-      laptop (up to 15 inches) in the padded sleeve, your everyday
+      {{ product.description }}
     </P>
-
-    <p>R 109.95</p>
+    <p>R{{ product.price }}</p>
     <button>Add to Cart</button>
     <button>Checkout</button>
   </div>

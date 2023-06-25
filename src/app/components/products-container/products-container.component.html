@@ -8,6 +8,6 @@
   <app-product-card
     *ngFor="let p of products$ | async"
     [product]="p"
-    (click)="productDetails()"
+    [routerLink]="['/details', p.id]"
   />
 </div>

@@ -10,15 +10,10 @@ import { Product } from 'src/app/types/Product';
   styleUrls: ['./products-container.component.scss'],
 })
 export class ProductsContainerComponent implements OnInit {
-  private router = inject(Router);
   private productsService = inject(ProductsService);
   products$!: Observable<Product[]>;
 
   ngOnInit(): void {
-    this.products$ = this.productsService.getProductByCategory(0);
-  }
-
-  productDetails() {
-    this.router.navigate(['/details']);
+    this.products$ = this.productsService.getProductsByCategory(0);
   }
 }

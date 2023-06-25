@@ -17,7 +17,7 @@ export class ProductsService {
     'electronics',
   ];
 
-  getProductByCategory(categoryNumber: number) {
+  getProductsByCategory(categoryNumber: number) {
     return this.http
       .get<Product[]>(this.url)
       .pipe(
@@ -27,5 +27,9 @@ export class ProductsService {
           )
         )
       );
+  }
+
+  getProductById(id: number) {
+    return this.http.get<Product>(`${this.url}/${id}`);
   }
 }
