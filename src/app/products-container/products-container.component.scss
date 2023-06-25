@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    flex-grow: 1;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    padding: 1rem;
+    width: max-content;
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
