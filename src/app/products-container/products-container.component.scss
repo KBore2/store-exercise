@@ -16,5 +16,6 @@ nav {
 
 .products {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

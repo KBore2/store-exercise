@@ -2,12 +2,14 @@
   display: flex;
 
   img {
-    width: 100px;
-    height: 150px;
+    align-self: center;
+    width: 80px;
+    height: 120px;
   }
 
   .details {
     padding: 1rem;
+    width: 180px;
 
     .quantity {
       display: flex;
