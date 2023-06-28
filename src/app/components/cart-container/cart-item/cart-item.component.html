@@ -1,11 +1,11 @@
 <div class="item">
-  <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" />
+  <img [src]="cartItem.product.image" alt="" />
   <div class="details">
-    <p>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</p>
-    <p>R 109.95</p>
+    <p>{{ cartItem.product.title }}</p>
+    <p>R{{ cartItem.product.price * cartItem.quantity }}</p>
     <div class="quantity">
       <button>-</button>
-      <p>1</p>
+      <p>{{ cartItem.quantity }}</p>
       <button>+</button>
     </div>
   </div>

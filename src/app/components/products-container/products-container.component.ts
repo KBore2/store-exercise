@@ -16,4 +16,8 @@ export class ProductsContainerComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.productsService.getProductsByCategory(0);
   }
+
+  getProductsByCategory(categoryNumber: number) {
+    this.products$ = this.productsService.getProductsByCategory(categoryNumber);
+  }
 }

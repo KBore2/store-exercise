@@ -1,8 +1,6 @@
-<div class="cart">
+<div class="cart" *ngIf="cart$ | async as cart">
   <div class="cart-items">
-    <app-cart-item />
-    <app-cart-item />
-    <app-cart-item />
+    <app-cart-item *ngFor="let cartItem of cart" [cartItem]="cartItem" />
   </div>
   <div class="cart-summary">
     <app-cart-summary />

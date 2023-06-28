@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '../types/Product';
-import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +17,9 @@ export class ProductsService {
   ];
 
   getProductsByCategory(categoryNumber: number) {
-    return this.http
-      .get<Product[]>(this.url)
-      .pipe(
-        map((products: any) =>
-          products.filter(
-            (p: any) => p.category === this.categories[categoryNumber]
-          )
-        )
-      );
+    return this.http.get<Product[]>(
+      `${this.url}/category/${this.categories[categoryNumber]}`
+    );
   }
 
   getProductById(id: number) {

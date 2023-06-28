@@ -1,8 +1,8 @@
 <nav>
-  <a href="">Men's</a>
-  <a href="">Women's</a>
-  <a href="">Jewelery</a>
-  <a href="">Tech</a>
+  <button (click)="getProductsByCategory(0)">Men's</button>
+  <button (click)="getProductsByCategory(1)">Women's</button>
+  <button (click)="getProductsByCategory(2)">Jewelery</button>
+  <button (click)="getProductsByCategory(3)">Tech</button>
 </nav>
 <div class="products">
   <app-product-card
