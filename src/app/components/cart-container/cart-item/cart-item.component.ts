@@ -11,9 +11,21 @@ import { Product } from 'src/app/types/Product';
 export class CartItemComponent implements OnInit {
   @Input() cartItem!: CartItem;
 
+  price: number = 0;
+
   productsService = inject(ProductsService);
 
   ngOnInit(): void {
-    console.log(this.cartItem);
+    this.price = this.cartItem.product.price * this.cartItem.quantity;
+  }
+
+  DecreaseQuantity() {
+    this.cartItem.quantity = this.cartItem.quantity - 1;
+    this.price = this.cartItem.product.price * this.cartItem.quantity;
+  }
+
+  IncreaseQuantity() {
+    this.cartItem.quantity = this.cartItem.quantity + 1;
+    this.price = this.cartItem.product.price * this.cartItem.quantity;
   }
 }

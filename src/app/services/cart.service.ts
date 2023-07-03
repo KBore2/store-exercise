@@ -27,7 +27,6 @@ export class CartService {
 
   getCartItems(): Observable<CartItem[]> {
     return of(this.cart).pipe(
-      tap((x) => console.log(x)),
       mergeMap((cart) =>
         from(cart).pipe(
           mergeMap((cartItem) =>
@@ -44,7 +43,7 @@ export class CartService {
         )
       ),
       toArray(),
-      tap((x) => console.log(x))
+      tap((x) => console.log('get cart:' + x))
     );
   }
 }

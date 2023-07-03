@@ -3,6 +3,7 @@
     <app-cart-item *ngFor="let cartItem of cart" [cartItem]="cartItem" />
   </div>
   <div class="cart-summary">
-    <app-cart-summary />
+    <button (click)="onClick()">click</button>
+    <app-cart-summary [cart]="cart" />
   </div>
 </div>
