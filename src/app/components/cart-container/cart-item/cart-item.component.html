@@ -1,0 +1,12 @@
+<div class="item">
+  <img [src]="cartItem.product.image" alt="" />
+  <div class="details">
+    <p>{{ cartItem.product.title }}</p>
+    <p>R{{ price }}</p>
+    <div class="quantity">
+      <button (click)="DecreaseQuantity()">-</button>
+      <p>{{ cartItem.quantity }}</p>
+      <button (click)="IncreaseQuantity()">+</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="product" *ngIf="product$ | async as product">
+  <img [src]="product.image" alt="picture of select product" />
+  <div class="details">
+    <p>{{ product.title }}</p>
+    <P>
+      {{ product.description }}
+    </P>
+    <p>R{{ product.price }}</p>
+    <button>Add to Cart</button>
+    <button>Checkout</button>
+  </div>
+</div>
