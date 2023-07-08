@@ -66,4 +66,15 @@ export class CartService {
 
     return of(this.cart);
   }
+
+  saveCart(cart: CartItem[]): Observable<any> {
+    const newCart = cart.map((x) => ({
+      productId: x.product.id,
+      quantity: x.quantity,
+    }));
+
+    this.cart = newCart;
+
+    return of();
+  }
 }

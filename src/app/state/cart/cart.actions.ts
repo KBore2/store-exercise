@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/types/CartItem';
 export const CartActions = createActionGroup({
   source: 'Cart',
   events: {
+    'Save cart': emptyProps(),
     'Update Carts': props<{ cartItemId: number; qauntity: number }>(),
     'Load Cart': emptyProps(),
     'Load Cart Success': props<{ cart: CartItem[] }>(),

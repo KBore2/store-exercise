@@ -8,7 +8,7 @@ export const cartFeatureKey = 'cart';
 export interface State {
   cartItems: CartItem[];
   error: string;
-  status: 'pending' | 'loading' | 'success' | 'error';
+  status: 'pending' | 'loading' | 'success' | 'error' | 'saved';
 }
 
 export const initialState: State = {
@@ -19,6 +19,7 @@ export const initialState: State = {
 
 export const cartReducer = createReducer(
   initialState,
+  on(CartActions.saveCart, (state) => ({ ...state, status: 'saved' as const })),
   on(CartActions.updateCarts, (state, { cartItemId, qauntity }) => {
     console.log(qauntity);
     return {
