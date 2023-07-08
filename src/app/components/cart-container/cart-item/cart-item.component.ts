@@ -13,8 +13,6 @@ export class CartItemComponent implements OnInit {
 
   price: number = 0;
 
-  productsService = inject(ProductsService);
-
   ngOnInit(): void {
     this.price = this.cartItem.product.price * this.cartItem.quantity;
   }

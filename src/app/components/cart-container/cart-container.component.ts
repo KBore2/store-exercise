@@ -1,6 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable, from, map, mergeMap, tap } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { CartActions } from 'src/app/state/cart/cart.actions';
+import { selectCart } from 'src/app/state/cart/cart.selectors';
 import { CartItem } from 'src/app/types/CartItem';
 
 @Component({
@@ -10,29 +13,29 @@ import { CartItem } from 'src/app/types/CartItem';
 })
 export class CartContainerComponent implements OnInit {
   cartService = inject(CartService);
+  store = inject(Store);
+  count = 0;
 
-  cart$!: Observable<CartItem[]>;
-  //cart: CartItem[] = [];
+  //cart$!: Observable<CartItem[]>;
+  cart$ = this.store.select(selectCart);
 
   ngOnInit(): void {
     //this.cartService.getCartItems().subscribe((x) => (this.cart = x));
-    this.cart$ = this.cartService.getCartItems();
+    this.store.dispatch(CartActions.loadCart());
+    // this.cartService.getCartItems().subscribe((x) => {
+    //   console.log(x);
+
+    // });
   }
 
   onClick() {
-    //this.cart.map((y) => (y = { ...y, quantity: y.quantity + 1 }));
-    // this.cart = [...this.cart,{product:{
-    //   id: 0,
-    //   title: '',
-    //   price: 0,
-    //   description: '',
-    //   category: '',
-    //   image: '',
-    //   rating: {
-    //     rate: 0,
-    //     count: 0
-    //   }
-    // },quantity:1}]
+    this.count = this.count + 1;
+    this.store.dispatch(
+      CartActions.updateCarts({
+        cartItemId: 1,
+        qauntity: this.count,
+      })
+    );
     console.log('hello');
   }
 }

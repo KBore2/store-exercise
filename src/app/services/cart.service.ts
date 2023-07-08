@@ -1,5 +1,14 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from, map, mergeMap, of, tap, toArray } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  from,
+  map,
+  mergeMap,
+  of,
+  tap,
+  toArray,
+} from 'rxjs';
 import { CartItem } from '../types/CartItem';
 import { ProductsService } from './products.service';
 import { Product } from '../types/Product';
@@ -37,13 +46,13 @@ export class CartService {
                     product: p,
                     quantity: cartItem.quantity,
                   })
-              )
+              ),
+              catchError((error) => of(error))
             )
           )
         )
       ),
-      toArray(),
-      tap((x) => console.log('get cart:' + x))
+      toArray()
     );
   }
 }
