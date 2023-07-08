@@ -1,10 +1,12 @@
 <div class="cart" *ngIf="cart$ | async as cart">
-  {{ cart }}
   <div class="cart-items">
-    <app-cart-item *ngFor="let cartItem of cart" [cartItem]="cartItem" />
+    <app-cart-item
+      *ngFor="let cartItem of cart"
+      [cartItem]="cartItem"
+      (qauntityChangeEvent)="changeQuantity($event)"
+    />
   </div>
-  <div class="cart-summary" *ngIf="cart !== []">
-    <button (click)="onClick()">click</button>
+  <div class="cart-summary">
     <app-cart-summary [cart]="cart" />
   </div>
 </div>

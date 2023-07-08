@@ -55,4 +55,15 @@ export class CartService {
       toArray()
     );
   }
+
+  addItemToCart(itemId: number): Observable<any> {
+    const item = this.cart.find((x) => x.productId === itemId) ?? null;
+    if (item !== null) {
+      item!.quantity = item!.quantity + 1;
+    } else {
+      this.cart = [...this.cart, { productId: itemId, quantity: 1 }];
+    }
+
+    return of(this.cart);
+  }
 }

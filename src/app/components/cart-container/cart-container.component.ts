@@ -16,26 +16,18 @@ export class CartContainerComponent implements OnInit {
   store = inject(Store);
   count = 0;
 
-  //cart$!: Observable<CartItem[]>;
   cart$ = this.store.select(selectCart);
 
   ngOnInit(): void {
-    //this.cartService.getCartItems().subscribe((x) => (this.cart = x));
     this.store.dispatch(CartActions.loadCart());
-    // this.cartService.getCartItems().subscribe((x) => {
-    //   console.log(x);
-
-    // });
   }
 
-  onClick() {
-    this.count = this.count + 1;
+  changeQuantity(cartItem: { id: number; quantity: number }) {
     this.store.dispatch(
       CartActions.updateCarts({
-        cartItemId: 1,
-        qauntity: this.count,
+        cartItemId: cartItem.id,
+        qauntity: cartItem.quantity,
       })
     );
-    console.log('hello');
   }
 }

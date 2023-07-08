@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, switchMap, tap } from 'rxjs';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/types/Product';
 
@@ -12,6 +13,7 @@ import { Product } from 'src/app/types/Product';
 export class ProductPageComponent implements OnInit {
   router = inject(ActivatedRoute);
   productsService = inject(ProductsService);
+  cartService = inject(CartService);
 
   product$!: Observable<Product>;
 
@@ -20,5 +22,15 @@ export class ProductPageComponent implements OnInit {
       map((id: any) => id['id']),
       switchMap((id) => this.productsService.getProductById(id))
     );
+  }
+
+  AddToCart(): void {
+    this.router.params
+      .pipe(
+        map((id: any) => Number(id['id'])),
+        switchMap((id) => this.cartService.addItemToCart(id)),
+        tap((x) => console.log(x))
+      )
+      .subscribe();
   }
 }

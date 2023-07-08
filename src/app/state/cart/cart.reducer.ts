@@ -33,7 +33,6 @@ export const cartReducer = createReducer(
     status: 'loading' as const,
   })),
   on(CartActions.loadCartSuccess, (state, { cart }) => {
-    console.log(cart);
     return {
       ...state,
       cartItems: cart,

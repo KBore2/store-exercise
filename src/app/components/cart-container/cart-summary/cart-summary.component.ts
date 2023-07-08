@@ -13,13 +13,10 @@ export class CartSummaryComponent implements OnChanges {
   totalPrice = 0;
 
   ngOnChanges() {
-    console.log(this.cart);
     this.totalPrice = this.cart.reduce(
       (total, item) => total + item.product.price * item.quantity,
       0
     );
-
-    console.log('price ' + this.totalPrice);
 
     this.totalItems = this.cart.reduce(
       (total, item) => total + item.quantity,
