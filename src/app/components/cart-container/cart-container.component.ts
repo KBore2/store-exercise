@@ -12,7 +12,6 @@ import { CartItem } from 'src/app/types/CartItem';
   styleUrls: ['./cart-container.component.scss'],
 })
 export class CartContainerComponent implements OnInit, OnDestroy {
-  cartService = inject(CartService);
   store = inject(Store);
   count = 0;
 

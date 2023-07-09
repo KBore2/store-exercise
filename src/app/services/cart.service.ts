@@ -56,6 +56,10 @@ export class CartService {
     );
   }
 
+  getCartTotalItems(): Observable<number> {
+    return of(this.cart.reduce((total, item) => (total += item.quantity), 0));
+  }
+
   addItemToCart(itemId: number): Observable<any> {
     const item = this.cart.find((x) => x.productId === itemId) ?? null;
     if (item !== null) {
