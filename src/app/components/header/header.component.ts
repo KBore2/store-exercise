@@ -9,7 +9,8 @@ import {
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
-import { selectCart } from 'src/app/state/cart/cart.selectors';
+import { CartActions } from 'src/app/state/cart/cart.actions';
+import { selectCart } from 'src/app/state/app-state';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   totalCartItems = 0;
 
   cart$ = this.store.select(selectCart);
-  getTotalCartIems$ = this.cart$.subscribe(
+
+  getTotalItems$ = this.cart$.subscribe(
     (cart) =>
       (this.totalCartItems = cart.reduce(
         (total, items) => (total += items.quantity),
@@ -31,14 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
-    this.cartService
-      .getCartTotalItems()
-      .subscribe((x) => (this.totalCartItems = x));
-
-    console.log(this.totalCartItems);
+    this.store.dispatch(CartActions.loadCart());
   }
 
   ngOnDestroy(): void {
-    this.getTotalCartIems$.unsubscribe();
+    this.getTotalItems$.unsubscribe();
   }
 }

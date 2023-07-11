@@ -1,9 +1,10 @@
-<div class="cart" *ngIf="cart$ | async as cart">
+<div class="cart" *ngIf="cartItems$ | async as cart">
   <div class="cart-items">
     <app-cart-item
       *ngFor="let cartItem of cart"
       [cartItem]="cartItem"
-      (qauntityChangeEvent)="changeQuantity($event)"
+      (increaseQuantityEvent)="increaseQuantity($event)"
+      (decreaseQuantityEvent)="decreaseQuantity($event)"
     />
   </div>
   <div class="cart-summary">

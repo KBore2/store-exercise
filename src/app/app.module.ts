@@ -18,6 +18,8 @@ import { Store, StoreModule } from '@ngrx/store';
 import { cartReducer } from './state/cart/cart.reducer';
 import { CartEffects } from './state/cart/cart.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { CartItemsEffects } from './state/cart-items/cart-items.effects';
+import { cartItemsReducer } from './state/cart-items/cart-items.reducer';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,8 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,
-    StoreModule.forRoot({ cart: cartReducer }),
-    EffectsModule.forRoot(CartEffects),
+    StoreModule.forRoot({ cart: cartReducer, cartItems: cartItemsReducer }),
+    EffectsModule.forRoot(CartEffects, CartItemsEffects),
   ],
   providers: [],
   bootstrap: [AppComponent],

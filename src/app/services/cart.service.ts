@@ -12,12 +12,13 @@ import {
 import { CartItem } from '../types/CartItem';
 import { ProductsService } from './products.service';
 import { Product } from '../types/Product';
+import { Cart } from '../types/Cart';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart = [
+  private cart: Cart[] = [
     {
       productId: 1,
       quantity: 2,
@@ -34,8 +35,12 @@ export class CartService {
 
   productsService = inject(ProductsService);
 
-  getCartItems(): Observable<CartItem[]> {
-    return of(this.cart).pipe(
+  getCart(): Observable<Cart[]> {
+    return of(this.cart);
+  }
+
+  getCartItems(cart: Cart[]): Observable<CartItem[]> {
+    return of(cart).pipe(
       mergeMap((cart) =>
         from(cart).pipe(
           mergeMap((cartItem) =>
@@ -71,9 +76,9 @@ export class CartService {
     return of(this.cart);
   }
 
-  saveCart(cart: CartItem[]): Observable<any> {
+  saveCart(cart: Cart[]): Observable<any> {
     const newCart = cart.map((x) => ({
-      productId: x.product.id,
+      productId: x.productId,
       quantity: x.quantity,
     }));
 

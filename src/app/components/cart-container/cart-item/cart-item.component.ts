@@ -8,6 +8,7 @@ import {
   inject,
 } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
+import { Cart } from 'src/app/types/Cart';
 import { CartItem } from 'src/app/types/CartItem';
 import { Product } from 'src/app/types/Product';
 
@@ -18,22 +19,14 @@ import { Product } from 'src/app/types/Product';
 })
 export class CartItemComponent {
   @Input() cartItem!: CartItem;
-  @Output() qauntityChangeEvent = new EventEmitter<{
-    id: number;
-    quantity: number;
-  }>();
+  @Output() decreaseQuantityEvent = new EventEmitter<number>();
+  @Output() increaseQuantityEvent = new EventEmitter<number>();
 
   DecreaseQuantity() {
-    this.qauntityChangeEvent.emit({
-      id: this.cartItem.product.id,
-      quantity: this.cartItem.quantity - 1,
-    });
+    this.decreaseQuantityEvent.emit(this.cartItem.product.id);
   }
 
   IncreaseQuantity() {
-    this.qauntityChangeEvent.emit({
-      id: this.cartItem.product.id,
-      quantity: this.cartItem.quantity + 1,
-    });
+    this.increaseQuantityEvent.emit(this.cartItem.product.id);
   }
 }

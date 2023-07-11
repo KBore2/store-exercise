@@ -1,8 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable, map, switchMap, tap } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { CartActions } from 'src/app/state/cart/cart.actions';
 import { Product } from 'src/app/types/Product';
 
 @Component({
@@ -14,6 +16,7 @@ export class ProductPageComponent implements OnInit {
   router = inject(ActivatedRoute);
   productsService = inject(ProductsService);
   cartService = inject(CartService);
+  store = inject(Store);
 
   product$!: Observable<Product>;
 
@@ -26,11 +29,9 @@ export class ProductPageComponent implements OnInit {
 
   AddToCart(): void {
     this.router.params
-      .pipe(
-        map((id: any) => Number(id['id'])),
-        switchMap((id) => this.cartService.addItemToCart(id)),
-        tap((x) => console.log(x))
-      )
-      .subscribe();
+      .pipe(map((id: any) => Number(id['id'])))
+      .subscribe((id) =>
+        this.store.dispatch(CartActions.addToCart({ productId: id }))
+      );
   }
 }
