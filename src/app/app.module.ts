@@ -14,6 +14,12 @@ import { CartContainerComponent } from './components/cart-container/cart-contain
 import { CartItemComponent } from './components/cart-container/cart-item/cart-item.component';
 import { CartSummaryComponent } from './components/cart-container/cart-summary/cart-summary.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { Store, StoreModule } from '@ngrx/store';
+import { cartReducer } from './state/cart/cart.reducer';
+import { CartEffects } from './state/cart/cart.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { CartItemsEffects } from './state/cart-items/cart-items.effects';
+import { cartItemsReducer } from './state/cart-items/cart-items.reducer';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,14 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     CartSummaryComponent,
     ProductPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatIconModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    HttpClientModule,
+    StoreModule.forRoot({ cart: cartReducer, cartItems: cartItemsReducer }),
+    EffectsModule.forRoot(CartEffects, CartItemsEffects),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

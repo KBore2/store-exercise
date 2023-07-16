@@ -1,38 +1,57 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Observable, from, map, mergeMap, tap } from 'rxjs';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, from, map, mergeMap, switchMap, tap } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { CartActions } from 'src/app/state/cart/cart.actions';
+import { selectCart, selectCartItems } from 'src/app/state/app-state';
+import { Cart } from 'src/app/types/Cart';
 import { CartItem } from 'src/app/types/CartItem';
+import { Product } from 'src/app/types/Product';
+import { CartItemsActions } from 'src/app/state/cart-items/cart-items.actions';
 
 @Component({
   selector: 'app-cart-container',
   templateUrl: './cart-container.component.html',
   styleUrls: ['./cart-container.component.scss'],
 })
-export class CartContainerComponent implements OnInit {
+export class CartContainerComponent implements OnInit, OnDestroy {
+  store = inject(Store);
   cartService = inject(CartService);
+  count = 0;
 
-  cart$!: Observable<CartItem[]>;
-  //cart: CartItem[] = [];
+  cartItems$ = this.store.select(selectCartItems);
 
   ngOnInit(): void {
-    //this.cartService.getCartItems().subscribe((x) => (this.cart = x));
-    this.cart$ = this.cartService.getCartItems();
+    this.store.dispatch(CartItemsActions.loadCartItems());
   }
 
-  onClick() {
-    //this.cart.map((y) => (y = { ...y, quantity: y.quantity + 1 }));
-    // this.cart = [...this.cart,{product:{
-    //   id: 0,
-    //   title: '',
-    //   price: 0,
-    //   description: '',
-    //   category: '',
-    //   image: '',
-    //   rating: {
-    //     rate: 0,
-    //     count: 0
-    //   }
-    // },quantity:1}]
-    console.log('hello');
+  ngOnDestroy(): void {
+    this.store.dispatch(CartActions.saveCart());
+  }
+
+  decreaseQuantity(productId: number) {
+    this.store.dispatch(
+      CartActions.removeFromCart({
+        productId,
+      })
+    );
+    this.store.dispatch(
+      CartItemsActions.removeFromCartItems({
+        productId,
+      })
+    );
+  }
+
+  increaseQuantity(productId: number) {
+    this.store.dispatch(
+      CartActions.addToCart({
+        productId,
+      })
+    );
+    this.store.dispatch(
+      CartItemsActions.addToCartItems({
+        productId,
+      })
+    );
   }
 }

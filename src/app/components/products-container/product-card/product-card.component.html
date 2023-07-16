@@ -1,5 +1,5 @@
 <div>
   <img [src]="product.image" alt="picture of an item" />
-  <p>R{{ product.price }}</p>
+  <p>{{ product.price | currency : "R" }}</p>
   <p>{{ product.title }}</p>
 </div>
