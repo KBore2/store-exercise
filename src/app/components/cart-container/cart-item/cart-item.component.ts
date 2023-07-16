@@ -22,11 +22,11 @@ export class CartItemComponent {
   @Output() decreaseQuantityEvent = new EventEmitter<number>();
   @Output() increaseQuantityEvent = new EventEmitter<number>();
 
-  DecreaseQuantity() {
+  decreaseQuantity() {
     this.decreaseQuantityEvent.emit(this.cartItem.product.id);
   }
 
-  IncreaseQuantity() {
+  increaseQuantity() {
     this.increaseQuantityEvent.emit(this.cartItem.product.id);
   }
 }

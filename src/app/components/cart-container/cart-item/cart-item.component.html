@@ -4,9 +4,9 @@
     <p>{{ cartItem.product.title }}</p>
     <p>{{ cartItem.product.price * cartItem.quantity | currency : "R" }}</p>
     <div class="quantity">
-      <button (click)="DecreaseQuantity()">-</button>
+      <button (click)="decreaseQuantity()">-</button>
       <p>{{ cartItem.quantity }}</p>
-      <button (click)="IncreaseQuantity()">+</button>
+      <button (click)="increaseQuantity()">+</button>
     </div>
   </div>
 </div>
