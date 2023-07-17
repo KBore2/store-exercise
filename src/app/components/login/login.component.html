@@ -1,0 +1,16 @@
+<div *ngIf="error" style="color: red">Incorrect username or password</div>
+<form #form="ngForm" (ngSubmit)="login()">
+  <input
+    required
+    type="text"
+    name="username"
+    placeholder="username"
+    [(ngModel)]="username"
+  />
+  <br />
+  <input required type="password" name="password" [(ngModel)]="password" />
+  <br />
+  <button type="submit">Login</button>
+</form>
+<br />
+<p>Don't have an account? <a routerLink="/sign-up">Sign Up</a></p>
