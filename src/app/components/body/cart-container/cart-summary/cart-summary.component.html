@@ -2,5 +2,5 @@
   <h2>Cart Summary</h2>
   <p>Total items: {{ totalItems }}</p>
   <p>{{ totalPrice | currency : "R" }}</p>
-  <a href="">Proceed to Checkout</a>
+  <a [routerLink]="'/checkout'">Proceed to Checkout</a>
 </div>
